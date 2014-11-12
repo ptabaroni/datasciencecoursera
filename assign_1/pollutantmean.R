@@ -3,7 +3,7 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
   ds <- lapply(monitor, read.csv)
   #result <-mean(ds[[pollutant]],na.rm = TRUE)
   #result
-  ds
+  monitor
   
 #  mean_fin= rep(NA,length(id)) #vector di NA in cui verranno salvate le medie per monitor
 #    for(i in id ){
