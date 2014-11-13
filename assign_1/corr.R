@@ -12,7 +12,7 @@ corr <- function(directory, threshold = 0) {
     ds <- read.csv(monitor[i], header =TRUE, sep=",")
     a<-ds[["sulfate"]]
     b<-ds[["nitrate"]]
-    ans <-append(ans, cor(a,b,use="complete.obs"))
+    ans <-append(ans, cor(a,b,use="pairwise.complete.obs"))
   }
 }
  round(ans,5)
