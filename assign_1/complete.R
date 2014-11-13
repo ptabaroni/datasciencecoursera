@@ -1,18 +1,19 @@
-complete <- function(directory, id = 1:332) {
-  monitor<-file.path(directory,paste(formatC(id,width=3, flag="0"),".csv",sep=""), fsep = "/" )
-  final_list <- data.frame(id =NULL, nobs=NULL)
-  names
+complete <- function(directory, ids = 1:332) {
+  monitor<-file.path(directory,paste(formatC(ids,width=3, flag="0"),".csv",sep=""), fsep = "/" )
+  id <-NULL
+  nobs <-NULL
   for (i in 1:length(monitor))
    {
     ds <- read.csv(monitor[i], header =TRUE, sep=",")
-    eval <- nrow(ds[complete.cases(ds),])  #numero per nobs
-   print (id[i])  #numero per id
-    #buffer<- append(mean_fin, ds[[pollutant]])
-#> final_list <- data.frame(id=numeric(0),nobs=numeric(0)) #crea il df vuoto
-#> colnames(final_list)<-c("id","nobs") #rinomina le cols (meglio alla fine?)
-#> final_list<-rbind(final_list, c(id=8,nobs=106))  #
-#> final_list<-rbind(final_list, c(id=1,nobs=102))
-#> http://stackoverflow.com/questions/14620972/how-to-combine-two-vectors-into-a-data-frame #meglio magari
+    eval <- nrow(ds[complete.cases(ds),])
+    if (eval > 0)
+    {
+      id<-append(id,ids[[i]])
+      nobs<-append(nobs,eval)
+    }
   }
-  #round(mean(mean_fin,na.rm=TRUE),3)
+#final<-data.frame(id,nobs)
+#colnames(final)<-(c("id","nobs"))
+#return(final)
+return(data.frame(id, nobs))
 }
