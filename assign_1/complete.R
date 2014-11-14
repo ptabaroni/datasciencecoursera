@@ -6,11 +6,11 @@ complete <- function(directory, ids = 1:332) {
    {
     ds <- read.csv(monitor[i], header =TRUE, sep=",")
     eval <- nrow(ds[complete.cases(ds),])
-    if (eval > 0)
-    {
+    #if (eval > 0)
+    #{
       id<-append(id,ids[[i]])
       nobs<-append(nobs,eval)
-    }
+    #}
   }
 #final<-data.frame(id,nobs)
 #colnames(final)<-(c("id","nobs"))

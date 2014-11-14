@@ -15,6 +15,6 @@ corr <- function(directory, threshold = 0) {
     ans <-append(ans, cor(a,b,use="pairwise.complete.obs"))
   }
 }
- round(ans,5)
+ans
 
 }
